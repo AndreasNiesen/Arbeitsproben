@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{% static 'arbeitsprobe/sudokusolver.css' %}">
+  <script src="{% static 'arbeitsprobe/sudokusolver.js' %}" defer></script>
+
+  <title>Sudoku!</title>
+</head>
+<body>
+  <h1 id="msg">Gib deine vorhandenen Zahlen ein:</h1>
+  <div class="sudoku-field">
+    <div class="row" id="r1">
+      <input class="field" type="text" maxlength="1" id="1">
+      <input class="field" type="text" maxlength="1" id="2">
+      <input class="field" type="text" maxlength="1" id="3">
+      <input class="field" type="text" maxlength="1" id="4">
+      <input class="field" type="text" maxlength="1" id="5">
+      <input class="field" type="text" maxlength="1" id="6">
+      <input class="field" type="text" maxlength="1" id="7">
+      <input class="field" type="text" maxlength="1" id="8">
+      <input class="field" type="text" maxlength="1" id="9">
+    </div>
+    <div class="row" id="r2">
+      <input class="field" type="text" maxlength="1" id="10">
+      <input class="field" type="text" maxlength="1" id="11">
+      <input class="field" type="text" maxlength="1" id="12">
+      <input class="field" type="text" maxlength="1" id="13">
+      <input class="field" type="text" maxlength="1" id="14">
+      <input class="field" type="text" maxlength="1" id="15">
+      <input class="field" type="text" maxlength="1" id="16">
+      <input class="field" type="text" maxlength="1" id="17">
+      <input class="field" type="text" maxlength="1" id="18">
+    </div>
+    <div class="row" id="r3">
+      <input class="field" type="text" maxlength="1" id="19">
+      <input class="field" type="text" maxlength="1" id="20">
+      <input class="field" type="text" maxlength="1" id="21">
+      <input class="field" type="text" maxlength="1" id="22">
+      <input class="field" type="text" maxlength="1" id="23">
+      <input class="field" type="text" maxlength="1" id="24">
+      <input class="field" type="text" maxlength="1" id="25">
+      <input class="field" type="text" maxlength="1" id="26">
+      <input class="field" type="text" maxlength="1" id="27">
+    </div>
+    <div class="row" id="r4">
+      <input class="field" type="text" maxlength="1" id="28">
+      <input class="field" type="text" maxlength="1" id="29">
+      <input class="field" type="text" maxlength="1" id="30">
+      <input class="field" type="text" maxlength="1" id="31">
+      <input class="field" type="text" maxlength="1" id="32">
+      <input class="field" type="text" maxlength="1" id="33">
+      <input class="field" type="text" maxlength="1" id="34">
+      <input class="field" type="text" maxlength="1" id="35">
+      <input class="field" type="text" maxlength="1" id="36">
+    </div>
+    <div class="row" id="r5">
+      <input class="field" type="text" maxlength="1" id="37">
+      <input class="field" type="text" maxlength="1" id="38">
+      <input class="field" type="text" maxlength="1" id="39">
+      <input class="field" type="text" maxlength="1" id="40">
+      <input class="field" type="text" maxlength="1" id="41">
+      <input class="field" type="text" maxlength="1" id="42">
+      <input class="field" type="text" maxlength="1" id="43">
+      <input class="field" type="text" maxlength="1" id="44">
+      <input class="field" type="text" maxlength="1" id="45">
+    </div>
+    <div class="row" id="r6">
+      <input class="field" type="text" maxlength="1" id="46">
+      <input class="field" type="text" maxlength="1" id="47">
+      <input class="field" type="text" maxlength="1" id="48">
+      <input class="field" type="text" maxlength="1" id="49">
+      <input class="field" type="text" maxlength="1" id="50">
+      <input class="field" type="text" maxlength="1" id="51">
+      <input class="field" type="text" maxlength="1" id="52">
+      <input class="field" type="text" maxlength="1" id="53">
+      <input class="field" type="text" maxlength="1" id="54">
+    </div>
+    <div class="row" id="r7">
+      <input class="field" type="text" maxlength="1" id="55">
+      <input class="field" type="text" maxlength="1" id="56">
+      <input class="field" type="text" maxlength="1" id="57">
+      <input class="field" type="text" maxlength="1" id="58">
+      <input class="field" type="text" maxlength="1" id="59">
+      <input class="field" type="text" maxlength="1" id="60">
+      <input class="field" type="text" maxlength="1" id="61">
+      <input class="field" type="text" maxlength="1" id="62">
+      <input class="field" type="text" maxlength="1" id="63">
+    </div>
+    <div class="row" id="r8">
+      <input class="field" type="text" maxlength="1" id="64">
+      <input class="field" type="text" maxlength="1" id="65">
+      <input class="field" type="text" maxlength="1" id="66">
+      <input class="field" type="text" maxlength="1" id="67">
+      <input class="field" type="text" maxlength="1" id="68">
+      <input class="field" type="text" maxlength="1" id="69">
+      <input class="field" type="text" maxlength="1" id="70">
+      <input class="field" type="text" maxlength="1" id="71">
+      <input class="field" type="text" maxlength="1" id="72">
+    </div>
+    <div class="row" id="r9">
+      <input class="field" type="text" maxlength="1" id="73">
+      <input class="field" type="text" maxlength="1" id="74">
+      <input class="field" type="text" maxlength="1" id="75">
+      <input class="field" type="text" maxlength="1" id="76">
+      <input class="field" type="text" maxlength="1" id="77">
+      <input class="field" type="text" maxlength="1" id="78">
+      <input class="field" type="text" maxlength="1" id="79">
+      <input class="field" type="text" maxlength="1" id="80">
+      <input class="field" type="text" maxlength="1" id="81">
+    </div>
+  </div>
+  <button id="solve">Solve</button>
+  <button id="reset">Reset</button>
+</body>
+</html>

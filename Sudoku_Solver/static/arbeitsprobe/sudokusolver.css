@@ -1,0 +1,58 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  place-items: center;
+}
+
+h1#msg {
+  margin-bottom: -100px;
+  text-align: center;
+}
+h1.error {
+  color: red;
+}
+h1.success {
+  color: greenyellow;
+}
+
+.field {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  outline: 1px solid black;
+}
+
+.bruteforced {
+  color: yellowgreen;
+}
+
+.sudoku-field {
+  display: inline-flex;
+  flex-direction: column;
+  border: 5px solid black;
+}
+
+.row {
+  display: flex;
+}
+
+.row:nth-child(3n):not(:last-child) {
+  border-bottom: 3px solid black;
+}
+
+.row .field:nth-child(3n):not(:last-child) {
+  border-right: 3px solid black;
+}
