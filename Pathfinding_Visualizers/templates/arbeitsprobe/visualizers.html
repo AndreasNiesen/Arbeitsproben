@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{% static 'arbeitsprobe/visualizers/visualizer.css' %}">
+  <script src="{% static 'arbeitsprobe/visualizers/visu_main.js' %}" type="module"></script>
+
+  <title>Visualizers</title>
+</head>
+<body>
+  <div class="controls bigScreenFlexRow">
+    <div class="controlWrap bigScreenFlexRow">
+      <p class="desc">Algorithmus</p>
+      <select name="algoSelect" id="algoSelect">
+        <option value="aStar" selected>A*</option>
+        <option value="dijkstras">Dijkstras</option>
+      </select>
+    </div>
+    <div class="controlWrap bigScreenFlexRow">
+      <p class="desc">Node</p>
+      <select name="nodeSelect" id="nodeSelect">
+        <option value="start" selected>Start</option>
+        <option value="target">Ziel</option>
+        <!-- <option value="weight">Gewicht</option> TODO: Implement -->
+        <option value="wall">Wand</option>
+      </select>
+    </div>
+    <button class="btn" id="startBtn">Start!</button>
+    <button class="btn" id="resetBtn">Reset!</button>
+  </div>
+  <canvas id="mainCanvas"></canvas>
+</body>
+</html>
