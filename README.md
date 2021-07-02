@@ -6,3 +6,6 @@
  <br>
  .html Dateien befinden sich im templates-Ordner der entsprechenden Projekte.<br>
  .css und .js Dateien befinden sich im static-Ordner der entsprechenden Projekte.<br>
+<br>
+<br>
+Die Live-Versionen der hier vorhanden Projekte sind unter https://www.andreasecke.de/probe/ zu finden.
