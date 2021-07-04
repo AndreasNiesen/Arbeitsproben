@@ -37,11 +37,10 @@ function createBookTile(bookObj) {
   tile.dataset.bookId = bookObj.id;
 
   // load the image
-  const path = "/media" + bookObj.cover.substring(1);
+  const path = "/media" + bookObj.cover.slice(1, -4) + "_small" + ".jpg";  // TODO: change to complement all file formats
   const img = document.createElement("img");
   img.src = path;
   img.classList.add("bookImage");
-  img.loading = "lazy";  // TODO: check if it works
 
   // create info-container
   const infos = document.createElement("div"); 
