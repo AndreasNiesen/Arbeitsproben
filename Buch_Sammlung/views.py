@@ -11,7 +11,7 @@ def bookCollection(request):
 def authorEndpoint(request):
     if not request.method == "POST": return HttpResponse("Error: POST-Requests only!")
     
-    request_body = str(request.body)[2:-1].split("=")  # entferne "b'" vom Start des Strings und "'" vom Ende
+    request_body = request.body.decode("utf-8").split("=")
     if len(request_body) < 2: return HttpResponse("Error: Bad POST-Body!")
     
     parameter = request_body[0]  # nur das erste Paar wird beachtet, der rest wird dropped
@@ -26,7 +26,7 @@ def bookEndpoint(request):
     if not request.method == "POST": return HttpResponse("Error: POST-Requests only!")
     
     fields = ["name", "author", "seriesName", "desc_de", "desc_en"]
-    request_body = str(request.body)[2:-1]  # entferne "b'" vom Start des Strings und "'" vom Ende
+    request_body = request.body.decode("utf-8")
     filters = request_body.split(";")
     if len(filters) < 1: return HttpResponse("Error: No Parameters given!")
     
