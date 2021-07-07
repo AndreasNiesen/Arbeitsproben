@@ -143,6 +143,10 @@ body {
   margin-left: 0.5em;
 }
 
+.detailsSummary {
+  white-space: pre-line;
+}
+
 .overlayCloseButton {
   position: relative;
   margin-top: 4rem;

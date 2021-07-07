@@ -101,7 +101,13 @@ function modifyDetailDisplay(bookObj) {
   detailsImage.src = "/media" + bookObj.cover.substring(1);
   detailsTitle.textContent = bookObj.name;
   detailsAuthor.textContent = bookObj.author
-  detailsSummary.textContent = bookObj["desc_" + language];
+  const languageProperty = "desc_" + language;
+  const summarySourceStartIndex = bookObj[languageProperty].lastIndexOf("(");
+  const summary = bookObj[languageProperty].substring(0, summarySourceStartIndex);
+  let source = bookObj[languageProperty].substring(summarySourceStartIndex);  // Brackets at the end contain source of summary.
+  source = source.substring(1, source.lastIndexOf(")"));  // in case of trailing '\n'
+  if (source === "ME") source = language === "de" ? "Englische Zusammenfassung übersetzt." : "German summary translated.";
+  detailsSummary.textContent = summary + "\n\n" + (language === "de" ? "Quelle: " : "Source: ") + source;
 }
 
 /**
