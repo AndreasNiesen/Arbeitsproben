@@ -17,7 +17,7 @@
 </head>
 <body>
   <!-- Detail View (invisible unless click-event on booktile is triggered) -->
-  <div class="detailsOverlay">
+  <div class="detailsOverlay gridCentering">
     <div class="overlayCloseButton"></div>
     <div class="detailsBg">
       <div class="detailsImageWrap">
@@ -34,17 +34,26 @@
     </div>
   </div>
   <!-- Controls -->
-  <nav class="navbar"></nav>
-  <div class="searchbar">
-    <div class="searchInputContainer">
-      <select name="targetSelect" id="targetSelect">
-        <option value="books">Buch-Titel</option>
-        <option value="authors">Autor</option>
-      </select>
-      <input type="text" class="searchInput" id="searchInput" autocomplete="off">
-      <span class="amountResults"><i class="fas fa-search"></i></span>
+  <nav class="navbar">
+    <div class="ldWrapper">
+      <input type="checkbox" class="hiddenBox" id="ldBox">
+      <label for="ldBox" class="flexCentering">
+        <span>Hell</span>
+        <div class="visibleBox"></div>
+        <span>Dunkel</span>
+      </label>
     </div>
-  </div>
+    <div class="searchbar">
+      <div class="searchInputContainer">
+        <select name="targetSelect" id="targetSelect">
+          <option value="books">Buch-Titel</option>
+          <option value="authors">Autor</option>
+        </select>
+        <input type="text" class="searchInput" id="searchInput" autocomplete="off">
+        <span class="amountResults"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </nav>
   <!-- Book-Display (filled in via JS) -->
   <div class="booksContainer"></div>
 </body>

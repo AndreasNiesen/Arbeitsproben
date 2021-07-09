@@ -4,6 +4,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  overscroll-behavior: contain;
 }
 
 /* setup for light-/dark-mode */
@@ -27,13 +28,74 @@ body {
   background-color: var(--bg-color);
 }
 
-.searchbar {
-  margin: 2em 0px;
+/* natural direction is row */
+.flexCentering {
+  display: flex;
+  place-items: center;
+}
+
+/* natural direction is column */
+.gridCentering {
+  display: grid;
+  place-items: center;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 5em;
 }
 
 .amountResults {
-  color: var(--txt-color);
   cursor: pointer;
+}
+
+i {
+  /* For the fontawesome icons */
+  background: var(--bg-color);
+  color: var(--txt-color);
+}
+
+input.hiddenBox ~ label > span {
+  margin: 0 0.5em;
+  color: var(--txt-color);
+}
+
+input.hiddenBox ~ label {
+  cursor: pointer;
+}
+
+input.hiddenBox {
+  display: none;
+}
+div.visibleBox {
+  --h: 1em;
+  display: inline-block;
+  position: relative;
+  width: 2em;
+  height: var(--h);
+  background: var(--bg-color);
+  border: 1px solid var(--border-clr);
+  border-radius: 100vw;
+  box-shadow: inset 0.05em 0.05em 5px var(--border-clr);
+}
+div.visibleBox::after {
+  position: absolute;
+  top: 50%;  /* Feels more centered than top of 0 */
+  left: 0;
+  content: "";
+  height: var(--h);
+  aspect-ratio: 1 / 1;
+  background: var(--border-clr);
+  border-radius: 100%;
+  transform: translateY(-50%) scale(0.65);
+  transition: transform 250ms ease-in-out;
+}
+input.hiddenBox:checked ~ label div.visibleBox::after {
+  transform: translate(95%, -50%) scale(0.65);
 }
 
 .booksContainer {
@@ -107,8 +169,6 @@ body {
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
-  display: grid;
-  place-items: center;
 }
 
 .detailsOverlay.visible {
@@ -117,11 +177,12 @@ body {
 }
 
 .detailsBg {
+  position: relative;
   background: var(--bg-color);
   height: 80%;
   width: 70%;
   padding: 0.5em;
-  min-width: 32rem;
+  min-width: 20ch;
   overflow-y: auto;
 }
 
@@ -137,6 +198,11 @@ body {
 .detailsInfos {
   font-size: 2rem;
   color: var(--txt-color);
+}
+
+.detailsInfos > span + p {
+  margin-top: 0.15em;
+  margin-bottom: 0.5em;
 }
 
 .detailsInfos > p {

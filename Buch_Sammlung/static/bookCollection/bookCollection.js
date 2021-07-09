@@ -7,22 +7,46 @@ const detailsTitle = document.querySelector(".detailsTitle");
 const detailsAuthor = document.querySelector(".detailsAuthor");
 const detailsSummary = document.querySelector(".detailsSummary");
 const overlayCloseButton = document.querySelector(".overlayCloseButton");
-const searchIcon = '<i class="fas fa-search"></i>';  // TODO: rename deprecated items
+const ldCheckBox = document.querySelector("#ldBox");
+const searchIcon = '<i class="fas fa-search" id="searchIcon"></i>';
+const clearSearchIcon = '<i class="fas fa-times-circle" id="deleteSearchIcon"></i>';
 const amountResults = document.querySelector("span.amountResults");  // TODO: rename deprecated items
 
-const bgClr = {light: "#f5f5f5", dark: "#0e0b16"};
-const txtClr = {light: "#0f1626", dark: "#e7dfdd"};
-const borderClr = {light: "#000000", dark: "#a239ca"};
+const ldVars = [
+  {name: "--bg-color", light: "#f5f5f5", dark: "#0e0b16"},
+  {name: "--txt-color", light: "#0f1626", dark: "#e7dfdd"},
+  {name: "--border-clr", light: "#000000", dark: "#a239ca"},
+]
 
-let language = "de";
+let language = localStorage.getItem("andreasEcke.language") ?? "de";
+let ldMode = localStorage.getItem("andreasEcke.darkMode") ?? "dark";
 let limitedBooks;
+
+if (ldMode === "dark") {
+  switchLDMode("dark");
+  ldCheckBox.checked = true;
+}
+
+ldCheckBox.addEventListener("change", e => {
+  if (e.target.checked) {
+    switchLDMode("dark");
+    localStorage.setItem("andreasEcke.darkMode", "dark");
+  }
+  else {
+    switchLDMode("light");
+    localStorage.setItem("andreasEcke.darkMode", "light");
+  }
+});
 
 targetSelect.addEventListener("change", e => {
   if (sInp.value) onSearch(targetSelect.value, sInp.value);
 });
 
 amountResults.addEventListener("click", e => {
-  if (sInp.value) onSearch(targetSelect.value, sInp.value);
+  if (sInp.value && e.currentTarget.innerHTML.includes('id="deleteSearchIcon"')) {
+    onSearch("books", "");
+    sInp.value = "";
+  } else if(sInp.value && e.currentTarget.innerHTML.includes('id="searchIcon"')) onSearch(targetSelect.value, sInp.value);
 });
 
 /**
@@ -143,7 +167,11 @@ async function onSearch(target, keyword) {
     console.log("Error in 'onSearch': ", error);
     return;
   }
-  // console.log(limitedBooks);
+  if (keyword !== "") {
+    amountResults.innerHTML = clearSearchIcon;
+  } else {
+    amountResults.innerHTML = searchIcon;
+  }
   displayBooks(limitedBooks);
 }
 
@@ -169,7 +197,5 @@ sInp.addEventListener("paste", e => {
 function switchLDMode(mode) {
   mode = mode.toLowerCase();
   if (mode !== "light" && mode !== "dark") return;
-  document.documentElement.style.setProperty("--bg-color", bgClr[mode]);
-  document.documentElement.style.setProperty("--txt-color", txtClr[mode]);
-  document.documentElement.style.setProperty("--border-clr", borderClr[mode]);
+  for (ldVar of ldVars) document.documentElement.style.setProperty(ldVar.name, ldVar[mode]);
 }
