@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="{% static 'qvb/qvb.js' %}" type="module"></script>
+  <link rel="stylesheet" href="{% static 'qvb/qvb.css' %}">
+
+  <title>Let's Sort!</title>
+</head>
+<body>
+  <div class="faq_wrapper">
+    <input type="checkbox" name="faq_toggle" id="faq_toggle">
+    <label for="faq_toggle">?</label>
+    <div class="faq">
+      <div class="faq__container">
+        <div class="faq__container__info_wrap">
+          <input type="checkbox" name="qvb" id="qvb">
+          <label for="qvb">
+            <h1>qvb?</h1>
+          </label>
+          <div class="faq__container__info">
+            <p>QuickSort versus BubbleSort!</p>
+          </div>
+        </div>
+        <div class="faq__container__info_wrap">
+          <input type="checkbox" name="why_tho" id="why_tho">
+          <label for="why_tho">
+            <h1>But.. Why?</h1>
+          </label>
+          <div class="faq__container__info">
+            <p>I thought it would be nice to see HOW MUCH faster QuickSort is than BubbleSort.</p>
+            <p>With the additional comparison between blocking and asynchronous QuickSort.</p>
+            <p>On the one hand I thought it was a bit unfair to compare BubbleSort with an asynchronous QuickSort, as BubbleSort cannot be run in an asynchronous manner.</p>
+            <p>On the otherhand its BubbleSorts fault to not be asynchronous-compatible.. </p>
+            <p>In the end I thought: Why not both?</p>
+          </div>
+        </div>
+        <div class="faq__container__info_wrap">
+          <input type="checkbox" name="custom_size" id="custom_size">
+          <label for="custom_size">
+            <h1>Custom Size</h1>
+          </label>
+          <div class="faq__container__info">
+            <p>To use an array of custom size, use the get parameter "size".</p>
+            <p>Default size is 100. The array will be filled with values between [0, size). (An array of size 1000 gives an impressive comparison - but even then BubbleSort takes forever. For more than 5000 barely anything is visible.</p>
+            <p>Example:</p>
+            <blockquote>andreasecke.de/probe/qvb?size=1000</blockquote>
+            <br>
+            <p>Warning: Only the first parameter will be used. Any other parameter will be discarded!</p>
+          </div>
+        </div>
+        <div class="faq__container__info_wrap">
+          <input type="checkbox" name="custom_arr" id="custom_arr">
+          <label for="custom_arr">
+            <h1>Custom Array</h1>
+          </label>
+          <div class="faq__container__info">
+            <p>To use a custom array, use the get parameter "arr" and split the numbers with commas.</p>
+            <p>The default array contains 100 randomized values between [0, 100).</p>
+            <p>The sorted/final Array (sorted independently of the visual ongoings), will be logged into the console.</p>
+            <p>Example:</p>
+            <blockquote>andreasecke.de/probe/qvb?arr=5,2,5,6,8,4,2</blockquote>
+            <br>
+            <p>Warning: Only the first parameter will be used. Any other parameter will be discarded!</p>
+          </div>
+        </div>
+        <div class="faq__container__info_wrap">
+          <input type="checkbox" name="small_infos" id="small_infos">
+          <label for="small_infos">
+            <h1>A few Details</h1>
+          </label>
+          <div class="faq__container__info">
+            <p>The "Sleep" duration after every comparison is 50ms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sort_container">
+    <h1 class="description">Async QuickSort</h1>
+    <div class="sort_container content">
+      <canvas id="quicksort" class="display"></canvas>
+      <div id="qs_legend" class="legend">
+        <div class="legend_wrap">
+          <div class="blob red"></div><p>Unsorted</p>
+        </div>
+        <div class="legend_wrap">
+          <div class="blob blue"></div><p>The Pivots</p>
+        </div>
+        <div class="legend_wrap">
+          <div class="blob green"></div><p>Sorted</p>
+        </div>
+        <div class="legend_wrap">
+          <div class="blob black"></div><p>Index</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sort_container">
+    <h1 class="description">Blocking QuickSort</h1>
+    <div class="sort_container content">
+      <canvas id="badQuickSort" class="display"></canvas>
+      <div id="qs_legend" class="legend">
+        <div class="legend_wrap">
+          <div class="blob red"></div><p>Unsorted</p>
+        </div>
+        <div class="legend_wrap">
+          <div class="blob blue"></div><p>The Pivots</p>
+        </div>
+        <div class="legend_wrap">
+          <div class="blob green"></div><p>Sorted</p>
+        </div>
+        <div class="legend_wrap">
+          <div class="blob black"></div><p>Index</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sort_container">
+    <h1 class="description">BubbleSort</h1>
+    <div class="sort_container content">
+      <canvas id="bubblesort" class="display"></canvas>
+      <div id="qs_legend" class="legend">
+        <div class="legend_wrap">
+          <div class="blob red"></div><p>Unsorted</p>
+        </div>
+        <div class="legend_wrap">
+          <div class="blob blue"></div><p>Comparison</p>
+        </div>
+        <div class="legend_wrap">
+          <div class="blob green"></div><p>Sorted</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
