@@ -9,3 +9,7 @@
 <br>
 <br>
 Die Live-Versionen der hier vorhanden Projekte sind unter https://www.andreasecke.de/probe/ zu finden.
+- <a href="https://www.andreasecke.de/probe/qvb">Quick vs Bubble</a>
+- <a href="https://www.andreasecke.de/probe/sudoku_solver">Sudoku Solver</a>
+- <a href="https://www.andreasecke.de/probe/visualizers">Pathfinding Visualizer</a>
+- <a href="https://www.andreasecke.de/probe/books">Book Collection</a>
